@@ -1,0 +1,8 @@
+﻿@page "/datum" 
+<h3>Datum</h3>
+<input @bind="MyProperty" type="datetime-local"/>
+@MyProperty
+
+@code {
+    public DateTime MyProperty { get; set; } = DateTime.Now;
+}
