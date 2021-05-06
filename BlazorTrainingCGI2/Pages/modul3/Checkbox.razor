@@ -1,0 +1,20 @@
+﻿@page "/cb"
+<h3 style='@(MyProperty?"text-decoration:line-through":"")'>Checkbox</h3>
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck1" @bind="MyProperty">
+    <label class="custom-control-label" for="customCheck1">sichtbar</label>
+</div>
+@if (MyProperty)
+{
+    <h2>gecheckt</h2>
+}
+else
+{
+    <p>das ist toller <br />
+    Text</p>
+}
+
+@code {
+    public bool MyProperty { get; set; }
+  
+}
