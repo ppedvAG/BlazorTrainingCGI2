@@ -1,4 +1,5 @@
 using BlazorTrainingCGI2.Data;
+using BlazorTrainingCGI2.Pages.modul4;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace BlazorTrainingCGI2
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<ChatVM>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
