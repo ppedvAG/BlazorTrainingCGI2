@@ -1,0 +1,15 @@
+﻿@page "/http"
+@inject IHttpClientFactory http
+<h3>HttpSample</h3>
+@MyProperty
+<button @onclick="click">click</button>
+@code {
+    public string MyProperty { get; set; }
+    void click()
+
+    {
+        //var client = new HttpClient();
+        var client = http.CreateClient();
+       MyProperty= client.GetStringAsync(@"https://services.odata.org/TripPinRESTierService/People/$count").Result;
+    }
+}
