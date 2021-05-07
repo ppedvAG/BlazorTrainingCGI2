@@ -1,0 +1,9 @@
+﻿@page "/details"
+@page "/details/{id}"
+
+<h3>Details</h3>
+@ID
+@code {
+    [Parameter]
+    public string ID { get; set; }
+}
