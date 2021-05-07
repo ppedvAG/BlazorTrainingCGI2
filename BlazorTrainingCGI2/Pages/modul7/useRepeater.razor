@@ -1,0 +1,22 @@
+﻿@page "/ur"
+@using BlazorTrainingCGI2.models
+@inject northwindContext _db
+<h3>useRepeater</h3>
+<table class="table-striped">
+    <RepeaterPPEDV ItemType="Customer" SelectMethod="Load"
+                   Context="Hannes">
+        <EmptyTemplate>da ist nicht da</EmptyTemplate>
+        <ItemTemplate>
+            <tr>
+                <td>@Hannes.CompanyName</td>
+            </tr>
+
+        </ItemTemplate>
+    </RepeaterPPEDV>
+</table>
+@code {
+   public IEnumerable<Customer> Load()
+    {
+        return _db.Customers;
+    }
+}

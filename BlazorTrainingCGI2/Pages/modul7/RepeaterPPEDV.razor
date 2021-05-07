@@ -1,0 +1,36 @@
+﻿@typeparam ItemType
+@if (Items?.Any() ??false)
+{
+    @foreach (var item in Items)
+    {
+        @ItemTemplate(item)
+    }
+}
+else
+{
+    @EmptyTemplate
+
+}
+
+@code {
+    [Parameter]
+    public RenderFragment<ItemType> ItemTemplate { get; set; }
+    [Parameter]
+    public RenderFragment EmptyTemplate { get; set; }
+    [Parameter]
+    public IEnumerable<ItemType> Items { get; set; }
+    [Parameter]
+    public Func<IEnumerable<ItemType>> SelectMethod { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Items = SelectMethod.Invoke();
+            StateHasChanged();
+        }
+
+
+    }
+
+}
