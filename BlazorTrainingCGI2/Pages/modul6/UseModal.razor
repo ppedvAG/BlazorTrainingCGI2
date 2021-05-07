@@ -1,0 +1,24 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+<ModalPPEDV @ref="pp" Titel="doller Dialog" OnSave="speichern">
+    <p>bitte eingeben x
+    <input @bind="MyProperty" class="form-control"/>
+    </p>
+</ModalPPEDV>
+<button @onclick="show">open modal</button>
+@MyProperty
+
+@code {
+    ModalPPEDV pp;
+    public string MyProperty { get; set; }
+    void show()
+    {
+
+        pp.Show();
+    }
+    void speichern()
+    {
+        pp.Show();
+
+    }
+}
