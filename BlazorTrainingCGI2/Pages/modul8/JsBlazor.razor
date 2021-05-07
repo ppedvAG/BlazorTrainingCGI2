@@ -1,0 +1,37 @@
+﻿@page "/jsblazor"
+@inject IJSRuntime JsRuntime
+<h3>JsBlazor</h3>
+<button @onclick="call1">alert</button>
+<br />
+<button @onclick="call2">localStorage</button>
+<br />
+<button @onclick="call3">Rückgabe</button> @Wert
+<br />
+<button @onclick="call4">Page Title</button> @Wert
+<br />
+
+@code {
+    string Wert;
+    void call1()
+    {
+
+        JsRuntime.InvokeVoidAsync("alert", "Hello Word");
+
+    }
+    void call2()
+    {
+
+        //localStorage.setItem('myCat', 'Tom');
+        JsRuntime.InvokeVoidAsync("localStorage.setItem", "myCat", "Toim");
+
+    }
+    async void call3()
+    {
+        Wert = await JsRuntime.InvokeAsync<string>("prompt", "was ist die zahl");
+        StateHasChanged();
+    }
+    void call4()
+    {
+        JsRuntime.InvokeVoidAsync("eval", "document.title = 'Tolle App'");
+        }
+}
