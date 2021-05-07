@@ -1,0 +1,22 @@
+﻿@using BlazorTrainingCGI2.Pages.modul5
+<h3 @attributes="MyAttr">@Titel</h3>
+<hr />
+@MyPerson.Name
+
+<hr />
+@MyCasc
+<hr />
+@ChildContent
+
+@code {
+    [Parameter]
+    public string Titel { get; set; }
+    [Parameter]
+    public Person MyPerson { get; set; }
+    [CascadingParameter]
+    public string MyCasc { get; set; }
+    [Parameter(CaptureUnmatchedValues =true)]
+    public Dictionary<string,object> MyAttr { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

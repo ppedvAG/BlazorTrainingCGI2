@@ -1,0 +1,22 @@
+﻿@page "/up" 
+@using modul5 
+<h3>UseParComponent</h3>
+<CascadingValue Value="@("Preishuber")">
+    <ParameterComponent Titel="Mein Titel" @ref="pm"
+                        MyPerson="@(new Person {Name="Hannes" })"
+                        style="background-color:blue;" width="100px" height="100px"
+                        >
+        <p>das ist mien <br />toller Child content 
+        </p>
+    </ParameterComponent>
+</CascadingValue>
+
+<div style="background-color:blue;" width="100px" height="100px"></div>
+@code {
+    ParameterComponent pm;
+    protected override void OnInitialized()
+    {
+        //  pm.MyPerson = new Person();
+       // pm.ChildContent =@<p>html</p>;
+    }
+}
