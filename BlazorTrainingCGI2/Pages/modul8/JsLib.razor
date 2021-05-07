@@ -1,0 +1,14 @@
+﻿@page "/jslib" 
+@inject IJSRuntime Jsruntime
+<h3>JsLib</h3>
+<button @onclick="click">click </button>
+@code {
+    void click()
+    {
+
+        var x = new RazorClassLibrary1.ExampleJsInterop(Jsruntime);
+       var y= x.Prompt("Hallo Welt");
+
+
+    }
+}
