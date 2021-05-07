@@ -1,0 +1,12 @@
+﻿@page "/he"
+<h3>HtmlElement</h3>
+<button @onclick="ChangeFocus">Fokus</button>
+<input @ref="Input1" />
+
+@code {
+    ElementReference Input1;
+    private async Task ChangeFocus()
+    {
+        await Input1.FocusAsync();
+    }
+}
