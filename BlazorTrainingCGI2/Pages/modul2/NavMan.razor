@@ -1,0 +1,32 @@
+﻿@page "/navman"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager _NavigationManager
+@implements IDisposable
+<h3>NavMan</h3>
+<a href="/navman?data=10"> 10</a> |
+<a href="/navman?data=20"> 20</a> |
+<a href="/navman?data=30"> 30</a>
+@data
+@code {
+    int data = 0;
+
+    protected override void OnInitialized()
+    {
+
+        _NavigationManager.LocationChanged += LocationChanged;
+    }
+
+    void LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+
+        var uri = _NavigationManager.ToAbsoluteUri(_NavigationManager.Uri);
+        QueryHelpers.ParseQuery(uri.Query).TryGetValue("data", out var _data);
+        data = Convert.ToInt32(_data);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        _NavigationManager.LocationChanged -= LocationChanged;
+    }
+}
